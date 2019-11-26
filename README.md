@@ -1,4 +1,4 @@
-# productivist
+# dailyU
 
 A new Flutter project.
 
