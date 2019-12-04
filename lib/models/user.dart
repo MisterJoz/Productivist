@@ -1,7 +1,7 @@
 import 'package:productivist/models/task.dart';
 import 'package:productivist/models/reminder.dart';
 import 'package:productivist/models/event.dart';
-import 'package:flutter/material.dart';
+import 'package:productivist/models/project.dart';
 
 class User {
   int id;
@@ -11,6 +11,7 @@ class User {
   List<Task> tasks;
   List<Reminder> reminders;
   List<Event> events;
+  List<Project> projects;
 
   User(
       {this.id,
@@ -19,7 +20,8 @@ class User {
       this.password,
       this.tasks,
       this.reminders,
-      this.events});
+      this.events,
+      this.projects});
 }
 
 List<Task> myTasks = [
@@ -47,6 +49,14 @@ List<Reminder> myReminders = [
   )
 ];
 
+List<Project> myProjects = [
+  Project(
+      id: 0,
+      title: "iOS App",
+      description: "Productivity App",
+      dueDate: DateTime.now()),
+];
+
 final User currentUser = User(
   id: 0,
   name: "Josh",
@@ -54,4 +64,5 @@ final User currentUser = User(
   password: "password",
   tasks: myTasks,
   reminders: myReminders,
+  projects: myProjects,
 );

@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:productivist/models/user.dart';
+import 'package:productivist/screens/project_page.dart';
 import 'package:table_calendar/table_calendar.dart';
 import 'package:productivist/screens/calendar_page.dart';
+import 'package:intl/intl.dart';
 
 class WelcomePage extends StatefulWidget {
   @override
@@ -9,6 +11,15 @@ class WelcomePage extends StatefulWidget {
 }
 
 class _WelcomePageState extends State<WelcomePage> {
+  String formattedDate = DateFormat('EEE d MMM').format(DateTime.now());
+
+  CalendarController _controller;
+  @override
+  void initState() {
+    super.initState();
+    _controller = CalendarController();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,12 +42,15 @@ class _WelcomePageState extends State<WelcomePage> {
               ),
             ),
             ListTile(
-              title: Text('Item 1'),
+              title: Text('Projects'),
               onTap: () {
                 // Update the state of the app
                 // ...
                 // Then close the drawer
                 Navigator.pop(context);
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => ProjectPage()));
+                setState(() {});
               },
             ),
             ListTile(
@@ -79,7 +93,7 @@ class _WelcomePageState extends State<WelcomePage> {
                   Padding(
                     padding: EdgeInsets.fromLTRB(25, 5, 10, 30),
                     child: Text(
-                      "December 1, 2019",
+                      "$formattedDate",
                       style: TextStyle(
                           color: Colors.white30,
                           fontSize: 20.0,
@@ -89,6 +103,95 @@ class _WelcomePageState extends State<WelcomePage> {
                   )
                 ],
               ),
+              Container(
+                child: TableCalendar(
+                  calendarStyle: CalendarStyle(
+                    todayColor: Color.fromRGBO(10, 51, 75, 1),
+                    selectedColor: Color(0xff01A0C7),
+                  ),
+                  calendarController: _controller,
+                  initialCalendarFormat: CalendarFormat.week,
+                ),
+              ),
+              Container(
+                decoration: BoxDecoration(
+                  color: Color.fromRGBO(10, 51, 75, 1),
+                  borderRadius: BorderRadius.all(Radius.circular(4.0)),
+                ),
+                margin: EdgeInsets.fromLTRB(0, 20, 0, 20),
+                height: 400,
+                child: ListView(
+                  scrollDirection: Axis.horizontal,
+                  children: <Widget>[
+                    Card(
+                      color: Color.fromRGBO(15, 37, 51, 0),
+                      margin: EdgeInsets.fromLTRB(16.0, 16.0, 16.0, 16.0),
+                      child: Padding(
+                        padding: EdgeInsets.all(12.0),
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.stretch,
+                          children: <Widget>[
+                            SizedBox(
+                              width: 250,
+                              child: Text(
+                                "Tasks",
+                                style: TextStyle(
+                                  fontSize: 36.0,
+                                  color: Colors.grey[350],
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                    Card(
+                      color: Color.fromRGBO(15, 37, 51, 0),
+                      margin: EdgeInsets.fromLTRB(16.0, 16.0, 16.0, 16.0),
+                      child: Padding(
+                        padding: EdgeInsets.all(12.0),
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.stretch,
+                          children: <Widget>[
+                            SizedBox(
+                              width: 250,
+                              child: Text(
+                                "Events",
+                                style: TextStyle(
+                                  fontSize: 36.0,
+                                  color: Colors.grey[350],
+                                ),
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
+                    ),
+                    Card(
+                      color: Color.fromRGBO(15, 37, 51, 0),
+                      margin: EdgeInsets.fromLTRB(16.0, 16.0, 16.0, 16.0),
+                      child: Padding(
+                        padding: EdgeInsets.all(12.0),
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.stretch,
+                          children: <Widget>[
+                            SizedBox(
+                              width: 250,
+                              child: Text(
+                                "Reminders",
+                                style: TextStyle(
+                                  fontSize: 36.0,
+                                  color: Colors.grey[350],
+                                ),
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              )
             ],
           ),
         ),
