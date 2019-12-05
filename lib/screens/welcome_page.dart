@@ -85,7 +85,7 @@ class _WelcomePageState extends State<WelcomePage> {
                         style: TextStyle(
                             color: Colors.white,
                             fontSize: 46.0,
-                            fontFamily: "Calibre-Semibold",
+                            fontFamily: "Montserrat-SemiBold",
                             letterSpacing: 1.0),
                       ),
                     ),
@@ -96,7 +96,7 @@ class _WelcomePageState extends State<WelcomePage> {
                         style: TextStyle(
                             color: Colors.white,
                             fontSize: 46.0,
-                            fontFamily: "Calibre-Thin",
+                            fontFamily: "Montserrat-Thin",
                             letterSpacing: 1.0),
                       ),
                     )
