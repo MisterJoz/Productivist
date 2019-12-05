@@ -68,133 +68,159 @@ class _WelcomePageState extends State<WelcomePage> {
           ],
         ),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Container(
-          child: Column(
-            children: <Widget>[
-              Row(
-                children: <Widget>[
-                  Padding(
-                    padding: EdgeInsets.fromLTRB(20, 20, 20, 10),
-                    child: Text(
-                      "Welcome ${currentUser.name}",
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 46.0,
-                          fontFamily: "Calibre-Semibold",
-                          letterSpacing: 1.0),
-                    ),
-                  )
-                ],
-              ),
-              Row(
-                children: <Widget>[
-                  Padding(
-                    padding: EdgeInsets.fromLTRB(25, 5, 10, 30),
-                    child: Text(
-                      "$formattedDate",
-                      style: TextStyle(
-                          color: Colors.white30,
-                          fontSize: 20.0,
-                          fontFamily: "Calibre-Semibold",
-                          letterSpacing: .5),
-                    ),
-                  )
-                ],
-              ),
-              Container(
-                child: TableCalendar(
-                  calendarStyle: CalendarStyle(
-                    todayColor: Color.fromRGBO(10, 51, 75, 1),
-                    selectedColor: Color(0xff01A0C7),
-                  ),
-                  calendarController: _controller,
-                  initialCalendarFormat: CalendarFormat.week,
-                ),
-              ),
-              Container(
-                decoration: BoxDecoration(
-                  color: Color.fromRGBO(10, 51, 75, 1),
-                  borderRadius: BorderRadius.all(Radius.circular(4.0)),
-                ),
-                margin: EdgeInsets.fromLTRB(0, 20, 0, 20),
-                height: 400,
-                child: ListView(
-                  scrollDirection: Axis.horizontal,
+
+      //////////// UI Design begins here ///////////
+      body: ListView(
+        children: <Widget>[
+          Container(
+            child: Column(
+              children: <Widget>[
+                //Welcome message with currentUser name
+                Row(
                   children: <Widget>[
-                    Card(
-                      color: Color.fromRGBO(15, 37, 51, 0),
-                      margin: EdgeInsets.fromLTRB(16.0, 16.0, 16.0, 16.0),
-                      child: Padding(
-                        padding: EdgeInsets.all(12.0),
-                        child: Row(
-                          crossAxisAlignment: CrossAxisAlignment.stretch,
-                          children: <Widget>[
-                            SizedBox(
-                              width: 250,
-                              child: Text(
-                                "Tasks",
-                                style: TextStyle(
-                                  fontSize: 36.0,
-                                  color: Colors.grey[350],
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
+                    Padding(
+                      padding: EdgeInsets.fromLTRB(20, 20, 0, 10),
+                      child: Text(
+                        "Welcome ",
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 46.0,
+                            fontFamily: "Calibre-Semibold",
+                            letterSpacing: 1.0),
                       ),
                     ),
-                    Card(
-                      color: Color.fromRGBO(15, 37, 51, 0),
-                      margin: EdgeInsets.fromLTRB(16.0, 16.0, 16.0, 16.0),
-                      child: Padding(
-                        padding: EdgeInsets.all(12.0),
-                        child: Row(
-                          crossAxisAlignment: CrossAxisAlignment.stretch,
-                          children: <Widget>[
-                            SizedBox(
-                              width: 250,
-                              child: Text(
-                                "Events",
-                                style: TextStyle(
-                                  fontSize: 36.0,
-                                  color: Colors.grey[350],
-                                ),
-                              ),
-                            )
-                          ],
-                        ),
+                    Padding(
+                      padding: EdgeInsets.fromLTRB(0, 20, 20, 10),
+                      child: Text(
+                        "${currentUser.name}",
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 46.0,
+                            fontFamily: "Calibre-Thin",
+                            letterSpacing: 1.0),
                       ),
-                    ),
-                    Card(
-                      color: Color.fromRGBO(15, 37, 51, 0),
-                      margin: EdgeInsets.fromLTRB(16.0, 16.0, 16.0, 16.0),
-                      child: Padding(
-                        padding: EdgeInsets.all(12.0),
-                        child: Row(
-                          crossAxisAlignment: CrossAxisAlignment.stretch,
-                          children: <Widget>[
-                            SizedBox(
-                              width: 250,
-                              child: Text(
-                                "Reminders",
-                                style: TextStyle(
-                                  fontSize: 36.0,
-                                  color: Colors.grey[350],
-                                ),
-                              ),
-                            )
-                          ],
-                        ),
-                      ),
-                    ),
+                    )
                   ],
                 ),
-              )
-            ],
+
+                // Current date under welcome message
+                Row(
+                  children: <Widget>[
+                    Padding(
+                      padding: EdgeInsets.fromLTRB(25, 5, 10, 30),
+                      child: Text(
+                        "$formattedDate",
+                        style: TextStyle(
+                            color: Colors.white30,
+                            fontSize: 20.0,
+                            fontFamily: "Calibre-Semibold",
+                            letterSpacing: .5),
+                      ),
+                    )
+                  ],
+                ),
+
+                // Calendar where forecast should be
+                Container(
+                  child: TableCalendar(
+                    calendarStyle: CalendarStyle(
+                      todayColor: Color.fromRGBO(10, 51, 75, 1),
+                      selectedColor: Color(0xff01A0C7),
+                    ),
+                    calendarController: _controller,
+                    initialCalendarFormat: CalendarFormat.week,
+                  ),
+                ),
+
+                // Holds section cards (tasks, events, reminders)
+                Container(
+                  decoration: BoxDecoration(
+                    color: Color.fromRGBO(10, 51, 75, 1),
+                    borderRadius: BorderRadius.all(Radius.circular(4.0)),
+                  ),
+                  margin: EdgeInsets.fromLTRB(0, 10, 0, 20),
+                  height: 150,
+                  child: ListView(
+                    scrollDirection: Axis.horizontal,
+                    children: <Widget>[
+                      //Task card
+                      Card(
+                        color: Color.fromRGBO(15, 37, 51, 0),
+                        margin: EdgeInsets.fromLTRB(16.0, 16.0, 2.0, 16.0),
+                        child: Padding(
+                          padding: EdgeInsets.all(12.0),
+                          child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.stretch,
+                            children: <Widget>[
+                              SizedBox(
+                                width: 95,
+                                child: Text(
+                                  "Tasks",
+                                  style: TextStyle(
+                                    fontSize: 36.0,
+                                    color: Colors.grey[350],
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+
+                      // Events card
+                      Card(
+                        color: Color.fromRGBO(15, 37, 51, 0),
+                        margin: EdgeInsets.fromLTRB(16.0, 16.0, 2.0, 16.0),
+                        child: Padding(
+                          padding: EdgeInsets.all(12.0),
+                          child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.stretch,
+                            children: <Widget>[
+                              SizedBox(
+                                width: 95,
+                                child: Text(
+                                  "Events",
+                                  style: TextStyle(
+                                    fontSize: 36.0,
+                                    color: Colors.grey[350],
+                                  ),
+                                ),
+                              )
+                            ],
+                          ),
+                        ),
+                      ),
+
+                      // Reminders
+                      Card(
+                        color: Color.fromRGBO(15, 37, 51, 0),
+                        margin: EdgeInsets.fromLTRB(16.0, 16.0, 16.0, 16.0),
+                        child: Padding(
+                          padding: EdgeInsets.all(12.0),
+                          child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.stretch,
+                            children: <Widget>[
+                              SizedBox(
+                                width: 95,
+                                child: Text(
+                                  "Reminders",
+                                  style: TextStyle(
+                                    fontSize: 36.0,
+                                    color: Colors.grey[350],
+                                  ),
+                                ),
+                              )
+                            ],
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                )
+              ],
+            ),
           ),
-        ),
+        ],
       ),
     );
   }
