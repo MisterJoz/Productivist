@@ -121,17 +121,6 @@ class _WelcomePageState extends State<WelcomePage> {
                   ],
                 ),
 
-                // Calendar where forecast should be
-                Container(
-                  child: TableCalendar(
-                    calendarStyle: CalendarStyle(
-                      todayColor: Color.fromRGBO(10, 51, 75, 1),
-                      selectedColor: Color(0xff01A0C7),
-                    ),
-                    calendarController: _controller,
-                    initialCalendarFormat: CalendarFormat.week,
-                  ),
-                ),
 
                 // Holds section cards (tasks, events, reminders)
                 Container(
@@ -217,7 +206,20 @@ class _WelcomePageState extends State<WelcomePage> {
                       ),
                     ],
                   ),
-                )
+                ),
+
+                // Calendar where forecast should be
+                Container(
+                  child: TableCalendar(
+                    calendarStyle: CalendarStyle(
+                      todayColor: Color.fromRGBO(10, 51, 75, 1),
+                      selectedColor: Color(0xff01A0C7),
+                    ),
+                    calendarController: _controller,
+                    initialCalendarFormat: CalendarFormat.week,
+                  ),
+                ),
+
               ],
             ),
           ),
