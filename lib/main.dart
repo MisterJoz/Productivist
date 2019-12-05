@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:productivist/screens/signup_page.dart';
 import 'screens/welcome_page.dart';
 
 void main() => runApp(MyApp());
@@ -130,7 +131,10 @@ class _MyHomePageState extends State<MyHomePage> {
                       letterSpacing: -2,
                       color: Colors.grey,
                     )), 
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(context, 
+                      MaterialPageRoute(builder: (context) => SignUpPage()));
+                  },
                 ),
               ]
             ),
