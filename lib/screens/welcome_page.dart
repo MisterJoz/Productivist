@@ -25,9 +25,9 @@ class _WelcomePageState extends State<WelcomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color.fromRGBO(10, 51, 75, 1),
+        backgroundColor: Color(0xFF1d284d),
       ),
-      backgroundColor: Color.fromRGBO(10, 51, 75, 1),
+      backgroundColor: Color(0xFF1d284d),
       drawer: Drawer(
         // Add a ListView to the drawer. This ensures the user can scroll
         // through the options in the drawer if there isn't enough vertical
@@ -123,34 +123,43 @@ class _WelcomePageState extends State<WelcomePage> {
 
 
                 // Holds section cards (tasks, events, reminders)
-                Container(
-                  decoration: BoxDecoration(
-                    color: Color.fromRGBO(10, 51, 75, 1),
-                    borderRadius: BorderRadius.all(Radius.circular(4.0)),
-                  ),
-                  margin: EdgeInsets.fromLTRB(0, 10, 0, 20),
-                  height: 150,
-                  child: ListView(
-                    scrollDirection: Axis.horizontal,
+               
+                  Row(
                     children: <Widget>[
-                      //Task card
-                      Card(
+
+                      //Task button
+                      Padding(
+                        padding: EdgeInsets.fromLTRB(25, 0, 0, 0),
+                        child: SizedBox(
+                          width: 100,
+                          height: 100,
+                          child: RaisedButton(
+                            elevation: 10,
+                            child: Text("Tasks"),
+                            onPressed: (){},
+                            shape: RoundedRectangleBorder(
+                              borderRadius: new BorderRadius.circular(16.0),
+                            ),
+                            color: Color(0xFF071030),
+                          )
+                        ),
+                      ),
+                      /*Card(
                         color: Color.fromRGBO(15, 37, 51, 0),
-                        margin: EdgeInsets.fromLTRB(16.0, 16.0, 2.0, 16.0),
+                        margin: EdgeInsets.fromLTRB(0, 0, 0, 0),
                         child: Padding(
                           padding: EdgeInsets.all(12.0),
                           child: Row(
-                            crossAxisAlignment: CrossAxisAlignment.stretch,
+                            //crossAxisAlignment: CrossAxisAlignment.stretch,
                             children: <Widget>[
-                              SizedBox(
-                                width: 95,
+                              RaisedButton(
                                 child: Text(
                                   "Tasks",
                                   style: TextStyle(
-                                    fontSize: 36.0,
+                                    fontSize: 20,
                                     color: Colors.grey[350],
                                   ),
-                                ),
+                                ), onPressed: () {},
                               ),
                             ],
                           ),
@@ -203,10 +212,10 @@ class _WelcomePageState extends State<WelcomePage> {
                             ],
                           ),
                         ),
-                      ),
+                      ),*/
                     ],
                   ),
-                ),
+                
 
                 // Calendar where forecast should be
                 Container(

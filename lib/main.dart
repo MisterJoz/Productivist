@@ -103,7 +103,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
     // Actual UI Design starts here
     return Scaffold(
-      backgroundColor: Color.fromRGBO(10, 51, 75, 1),
+      backgroundColor: Color(0xFF1d284d),
       body: ListView(
         children: <Widget>[
           Padding(
