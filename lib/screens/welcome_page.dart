@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:productivist/models/user.dart';
 import 'package:productivist/screens/project_page.dart';
+import 'package:productivist/screens/reminder_page.dart';
 import 'package:table_calendar/table_calendar.dart';
 import 'package:productivist/screens/calendar_page.dart';
 import 'package:intl/intl.dart';
@@ -121,17 +122,14 @@ class _WelcomePageState extends State<WelcomePage> {
                   ],
                 ),
 
-
-                // Holds section cards (tasks, events, reminders)
-               
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      
-                      //Reminders button
-                      Padding(
-                        padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
-                        child: SizedBox(
+                // Holds section buttons (tasks, events, reminders)
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    //Reminders button
+                    Padding(
+                      padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
+                      child: SizedBox(
                           width: 110,
                           height: 110,
                           child: RaisedButton(
@@ -141,25 +139,27 @@ class _WelcomePageState extends State<WelcomePage> {
                               child: Padding(
                                 padding: EdgeInsets.fromLTRB(0, 0, 0, 15),
                                 child: Text("Reminders",
-                                style: TextStyle(
-                                  color: Colors.white70,
-                                  fontFamily: 'Montserrat-Medium',
-                                  fontSize: 16)),
+                                    style: TextStyle(
+                                        color: Colors.white70,
+                                        fontFamily: 'Montserrat-Medium',
+                                        fontSize: 16)),
                               ),
                             ),
-                            onPressed: (){},
+                            onPressed: () {
+                              Navigator.push(context, 
+                                MaterialPageRoute(builder: (context) => RemindersPage()));
+                            },
                             shape: RoundedRectangleBorder(
                               borderRadius: new BorderRadius.circular(16.0),
                             ),
                             color: Color(0xFF071030),
-                          )
-                        ),
-                      ),
-                      
-                      //Events button
-                      Padding(
-                        padding: EdgeInsets.fromLTRB(15, 0, 0, 0),
-                        child: SizedBox(
+                          )),
+                    ),
+
+                    //Events button
+                    Padding(
+                      padding: EdgeInsets.fromLTRB(15, 0, 0, 0),
+                      child: SizedBox(
                           width: 110,
                           height: 110,
                           child: RaisedButton(
@@ -169,25 +169,24 @@ class _WelcomePageState extends State<WelcomePage> {
                               child: Padding(
                                 padding: EdgeInsets.fromLTRB(0, 0, 0, 15),
                                 child: Text("Events",
-                                style: TextStyle(
-                                  color: Colors.white70,
-                                  fontFamily: 'Montserrat-Medium',
-                                  fontSize: 16)),
+                                    style: TextStyle(
+                                        color: Colors.white70,
+                                        fontFamily: 'Montserrat-Medium',
+                                        fontSize: 16)),
                               ),
                             ),
-                            onPressed: (){},
+                            onPressed: () {},
                             shape: RoundedRectangleBorder(
                               borderRadius: new BorderRadius.circular(16.0),
                             ),
                             color: Color(0xFF071030),
-                          )
-                        ),
-                      ),
+                          )),
+                    ),
 
-                      //Tasks button
-                      Padding(
-                        padding: EdgeInsets.fromLTRB(15, 0, 0, 0),
-                        child: SizedBox(
+                    //Tasks button
+                    Padding(
+                      padding: EdgeInsets.fromLTRB(15, 0, 0, 0),
+                      child: SizedBox(
                           width: 110,
                           height: 110,
                           child: RaisedButton(
@@ -197,25 +196,21 @@ class _WelcomePageState extends State<WelcomePage> {
                               child: Padding(
                                 padding: EdgeInsets.fromLTRB(0, 0, 0, 15),
                                 child: Text("Tasks",
-                                style: TextStyle(
-                                  color: Colors.white70,
-                                  fontFamily: 'Montserrat-Medium',
-                                  fontSize: 16)),
+                                    style: TextStyle(
+                                        color: Colors.white70,
+                                        fontFamily: 'Montserrat-Medium',
+                                        fontSize: 16)),
                               ),
                             ),
-                            onPressed: (){},
+                            onPressed: () {},
                             shape: RoundedRectangleBorder(
                               borderRadius: new BorderRadius.circular(16.0),
                             ),
                             color: Color(0xFF071030),
-                          )
-                        ),
-                      ),
-
-
-                    ],
-                  ),
-                
+                          )),
+                    ),
+                  ],
+                ),
 
                 // Calendar where forecast should be
                 Container(
@@ -228,7 +223,7 @@ class _WelcomePageState extends State<WelcomePage> {
                     initialCalendarFormat: CalendarFormat.week,
                   ),
                 ),
-
+                
               ],
             ),
           ),
