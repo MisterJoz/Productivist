@@ -49,6 +49,7 @@ class _MyHomePageState extends State<MyHomePage> {
   TextStyle style = TextStyle(fontFamily: 'Montserrat', fontSize: 20.0);
 
   Widget build(BuildContext context) {
+
     final emailField = TextField(
       obscureText: true,
       style: style,
@@ -74,7 +75,7 @@ class _MyHomePageState extends State<MyHomePage> {
     final loginButon = Material(
       elevation: 5.0,
       borderRadius: BorderRadius.circular(30.0),
-      color: Color(0xff01A0C7),
+      color: Colors.tealAccent[400],
       child: MaterialButton(
         minWidth: MediaQuery.of(context).size.width,
         padding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
@@ -90,6 +91,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 color: Colors.white, fontWeight: FontWeight.bold)),
       ),
     );
+
     return Scaffold(
         backgroundColor: Color.fromRGBO(10, 51, 75, 1),
         body: SingleChildScrollView(
@@ -103,15 +105,19 @@ class _MyHomePageState extends State<MyHomePage> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     SizedBox(
-                      height: 155.0,
+                      height: 100.0,
                     ),
+
                     SizedBox(height: 45.0),
+                    
                     emailField,
                     SizedBox(height: 25.0),
+                    
                     passwordField,
                     SizedBox(
                       height: 35.0,
                     ),
+
                     loginButon,
                     SizedBox(
                       height: 15.0,
