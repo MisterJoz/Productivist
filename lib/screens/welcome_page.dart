@@ -125,17 +125,28 @@ class _WelcomePageState extends State<WelcomePage> {
                 // Holds section cards (tasks, events, reminders)
                
                   Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-
-                      //Task button
+                      
+                      //Reminders button
                       Padding(
-                        padding: EdgeInsets.fromLTRB(25, 0, 0, 0),
+                        padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
                         child: SizedBox(
-                          width: 100,
-                          height: 100,
+                          width: 110,
+                          height: 110,
                           child: RaisedButton(
                             elevation: 10,
-                            child: Text("Tasks"),
+                            child: Align(
+                              alignment: Alignment.bottomLeft,
+                              child: Padding(
+                                padding: EdgeInsets.fromLTRB(0, 0, 0, 15),
+                                child: Text("Reminders",
+                                style: TextStyle(
+                                  color: Colors.white70,
+                                  fontFamily: 'Montserrat-Medium',
+                                  fontSize: 16)),
+                              ),
+                            ),
                             onPressed: (){},
                             shape: RoundedRectangleBorder(
                               borderRadius: new BorderRadius.circular(16.0),
@@ -144,75 +155,64 @@ class _WelcomePageState extends State<WelcomePage> {
                           )
                         ),
                       ),
-                      /*Card(
-                        color: Color.fromRGBO(15, 37, 51, 0),
-                        margin: EdgeInsets.fromLTRB(0, 0, 0, 0),
-                        child: Padding(
-                          padding: EdgeInsets.all(12.0),
-                          child: Row(
-                            //crossAxisAlignment: CrossAxisAlignment.stretch,
-                            children: <Widget>[
-                              RaisedButton(
-                                child: Text(
-                                  "Tasks",
-                                  style: TextStyle(
-                                    fontSize: 20,
-                                    color: Colors.grey[350],
-                                  ),
-                                ), onPressed: () {},
+                      
+                      //Events button
+                      Padding(
+                        padding: EdgeInsets.fromLTRB(15, 0, 0, 0),
+                        child: SizedBox(
+                          width: 110,
+                          height: 110,
+                          child: RaisedButton(
+                            elevation: 10,
+                            child: Align(
+                              alignment: Alignment.bottomLeft,
+                              child: Padding(
+                                padding: EdgeInsets.fromLTRB(0, 0, 0, 15),
+                                child: Text("Events",
+                                style: TextStyle(
+                                  color: Colors.white70,
+                                  fontFamily: 'Montserrat-Medium',
+                                  fontSize: 16)),
                               ),
-                            ],
-                          ),
+                            ),
+                            onPressed: (){},
+                            shape: RoundedRectangleBorder(
+                              borderRadius: new BorderRadius.circular(16.0),
+                            ),
+                            color: Color(0xFF071030),
+                          )
                         ),
                       ),
 
-                      // Events card
-                      Card(
-                        color: Color.fromRGBO(15, 37, 51, 0),
-                        margin: EdgeInsets.fromLTRB(16.0, 16.0, 2.0, 16.0),
-                        child: Padding(
-                          padding: EdgeInsets.all(12.0),
-                          child: Row(
-                            crossAxisAlignment: CrossAxisAlignment.stretch,
-                            children: <Widget>[
-                              SizedBox(
-                                width: 95,
-                                child: Text(
-                                  "Events",
-                                  style: TextStyle(
-                                    fontSize: 36.0,
-                                    color: Colors.grey[350],
-                                  ),
-                                ),
-                              )
-                            ],
-                          ),
+                      //Tasks button
+                      Padding(
+                        padding: EdgeInsets.fromLTRB(15, 0, 0, 0),
+                        child: SizedBox(
+                          width: 110,
+                          height: 110,
+                          child: RaisedButton(
+                            elevation: 10,
+                            child: Align(
+                              alignment: Alignment.bottomLeft,
+                              child: Padding(
+                                padding: EdgeInsets.fromLTRB(0, 0, 0, 15),
+                                child: Text("Tasks",
+                                style: TextStyle(
+                                  color: Colors.white70,
+                                  fontFamily: 'Montserrat-Medium',
+                                  fontSize: 16)),
+                              ),
+                            ),
+                            onPressed: (){},
+                            shape: RoundedRectangleBorder(
+                              borderRadius: new BorderRadius.circular(16.0),
+                            ),
+                            color: Color(0xFF071030),
+                          )
                         ),
                       ),
 
-                      // Reminders
-                      Card(
-                        color: Color.fromRGBO(15, 37, 51, 0),
-                        margin: EdgeInsets.fromLTRB(16.0, 16.0, 16.0, 16.0),
-                        child: Padding(
-                          padding: EdgeInsets.all(12.0),
-                          child: Row(
-                            crossAxisAlignment: CrossAxisAlignment.stretch,
-                            children: <Widget>[
-                              SizedBox(
-                                width: 95,
-                                child: Text(
-                                  "Reminders",
-                                  style: TextStyle(
-                                    fontSize: 36.0,
-                                    color: Colors.grey[350],
-                                  ),
-                                ),
-                              )
-                            ],
-                          ),
-                        ),
-                      ),*/
+
                     ],
                   ),
                 
