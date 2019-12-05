@@ -11,6 +11,7 @@ class WelcomePage extends StatefulWidget {
 }
 
 class _WelcomePageState extends State<WelcomePage> {
+  //String formattedDate = DateFormat('EEEE MMMM d y').format(DateTime.now());
   String formattedDate = DateFormat('EEE d MMM').format(DateTime.now());
 
   CalendarController _controller;
@@ -84,7 +85,7 @@ class _WelcomePageState extends State<WelcomePage> {
                         "Welcome ",
                         style: TextStyle(
                             color: Colors.white,
-                            fontSize: 46.0,
+                            fontSize: 40.0,
                             fontFamily: "Montserrat-SemiBold",
                             letterSpacing: 1.0),
                       ),
@@ -95,7 +96,7 @@ class _WelcomePageState extends State<WelcomePage> {
                         "${currentUser.name}",
                         style: TextStyle(
                             color: Colors.white,
-                            fontSize: 46.0,
+                            fontSize: 40.0,
                             fontFamily: "Montserrat-Thin",
                             letterSpacing: 1.0),
                       ),

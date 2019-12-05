@@ -10,17 +10,17 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, without quitting the app, try
-        // changing the primarySwatch below to Colors.green and then invoke
-        // "hot reload" (press "r" in the console where you ran "flutter run",
-        // or simply save your changes to "hot reload" in a Flutter IDE).
-        // Notice that the counter didn't reset back to zero; the application
-        // is not restarted.
-        primarySwatch: Colors.blue,
-      ),
+          // This is the theme of your application.
+          //
+          // Try running your application with "flutter run". You'll see the
+          // application has a blue toolbar. Then, without quitting the app, try
+          // changing the primarySwatch below to Colors.green and then invoke
+          // "hot reload" (press "r" in the console where you ran "flutter run",
+          // or simply save your changes to "hot reload" in a Flutter IDE).
+          // Notice that the counter didn't reset back to zero; the application
+          // is not restarted.
+          //primarySwatch: Colors.blue,
+          ),
       home: MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
@@ -46,87 +46,115 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   @override
-  TextStyle style = TextStyle(fontFamily: 'Montserrat', fontSize: 20.0);
-
   Widget build(BuildContext context) {
-
-    final emailField = TextField(
-      obscureText: true,
-      style: style,
-      decoration: InputDecoration(
-          fillColor: Colors.white,
-          contentPadding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
-          hintText: "Email",
-          border:
-              OutlineInputBorder(borderRadius: BorderRadius.circular(32.0))),
+    final emailField = Container(
+      color: Colors.white,
+      child: TextField(
+        obscureText: true,
+        style: TextStyle(
+          fontFamily: 'Montserrat',
+          fontSize: 20,
+        ),
+        decoration: InputDecoration(
+          //fillColor: Colors.white,
+          contentPadding: EdgeInsets.fromLTRB(15.0, 12.0, 20.0, 12.0),
+          hintText: "Username",
+        ),
+      ),
     );
 
-    final passwordField = TextField(
-      obscureText: true,
-      style: style,
-      decoration: InputDecoration(
-          fillColor: Colors.white,
-          contentPadding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
+    final passwordField = Container(
+      color: Colors.white,
+      child: TextField(
+        obscureText: true,
+        style: TextStyle(
+          fontFamily: 'Montserrat',
+          fontSize: 20,
+        ),
+        decoration: InputDecoration(
+          //fillColor: Colors.white,
+          contentPadding: EdgeInsets.fromLTRB(15.0, 12.0, 20.0, 12.0),
           hintText: "Password",
-          border:
-              OutlineInputBorder(borderRadius: BorderRadius.circular(32.0))),
+        ),
+      ),
     );
 
-    final loginButon = Material(
+    final loginButton = Material(
       elevation: 5.0,
       borderRadius: BorderRadius.circular(30.0),
       color: Colors.tealAccent[400],
       child: MaterialButton(
-        minWidth: MediaQuery.of(context).size.width,
-        padding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
+        minWidth: 200,
+        /*MediaQuery.of(context).size.width,*/
+        padding: EdgeInsets.fromLTRB(20.0, 5.0, 20.0, 5.0),
         onPressed: () {
           Navigator.push(
             context,
             MaterialPageRoute(builder: (context) => WelcomePage()),
           );
         },
-        child: Text("Login",
+        child: Text("Log In",
             textAlign: TextAlign.center,
-            style: style.copyWith(
-                color: Colors.white, fontWeight: FontWeight.bold)),
+            style: TextStyle(fontFamily: 'Montserrat', fontSize: 20)
+                .copyWith(color: Colors.white, fontWeight: FontWeight.bold)),
       ),
     );
 
+    // Actual UI Design starts here
     return Scaffold(
-        backgroundColor: Color.fromRGBO(10, 51, 75, 1),
-        body: SingleChildScrollView(
-          child: Center(
-            child: Container(
-              color: Color.fromRGBO(10, 51, 75, 1),
-              child: Padding(
-                padding: const EdgeInsets.all(36.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    SizedBox(
-                      height: 100.0,
-                    ),
+      backgroundColor: Color.fromRGBO(10, 51, 75, 1),
+      body: ListView(
+        children: <Widget>[
+          Padding(
+            padding: EdgeInsets.fromLTRB(55, 200, 0, 60),
+            child: Row(
+              children: <Widget>[
 
-                    SizedBox(height: 45.0),
-                    
-                    emailField,
-                    SizedBox(height: 25.0),
-                    
-                    passwordField,
-                    SizedBox(
-                      height: 35.0,
+                Padding(
+                  padding: EdgeInsets.fromLTRB(0, 0, 15, 0),
+                  child: Text("Log In",
+                    style: TextStyle(
+                      fontFamily: 'Montserrat-Bold',
+                      fontSize: 40,
+                      letterSpacing: -1,
+                      color: Colors.white,
                     ),
-
-                    loginButon,
-                    SizedBox(
-                      height: 15.0,
-                    ),
-                  ],
+                  ),
                 ),
-              ),
+
+                FlatButton(
+                  child: Text("Sign Up",
+                    style: TextStyle(
+                      fontFamily: 'Montserrat-ExtraLight',
+                      fontSize: 40,
+                      letterSpacing: -2,
+                      color: Colors.grey,
+                    )), 
+                  onPressed: () {},
+                ),
+              ]
             ),
           ),
-        ));
+
+          //Email textfield
+          Padding(
+            padding: EdgeInsets.fromLTRB(50, 0, 50, 15),
+            child: emailField,
+          ),
+
+          //Password textfield
+          Padding(
+            padding: EdgeInsets.fromLTRB(50, 0, 50, 40),
+            child: passwordField,
+          ),
+
+          //Login Button
+          Padding(
+            padding: EdgeInsets.fromLTRB(120, 0, 120, 0),
+            child: loginButton,
+          ),
+        ],
+      ),
+    );
   }
 }
