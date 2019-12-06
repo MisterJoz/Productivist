@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:productivist/models/user.dart';
 import 'package:productivist/screens/project_page.dart';
 import 'package:productivist/screens/reminder_page.dart';
+import 'package:productivist/screens/task_page.dart';
+import 'package:productivist/screens/event_page.dart';
 import 'package:table_calendar/table_calendar.dart';
 import 'package:productivist/screens/calendar_page.dart';
 import 'package:intl/intl.dart';
@@ -175,7 +177,10 @@ class _WelcomePageState extends State<WelcomePage> {
                                         fontSize: 16)),
                               ),
                             ),
-                            onPressed: () {},
+                            onPressed: () {
+                              Navigator.push(context, 
+                                MaterialPageRoute(builder: (context) => EventsPage()));
+                            },
                             shape: RoundedRectangleBorder(
                               borderRadius: new BorderRadius.circular(16.0),
                             ),
@@ -202,7 +207,10 @@ class _WelcomePageState extends State<WelcomePage> {
                                         fontSize: 16)),
                               ),
                             ),
-                            onPressed: () {},
+                            onPressed: () {
+                               Navigator.push(context, 
+                                MaterialPageRoute(builder: (context) => TasksPage()));
+                            },
                             shape: RoundedRectangleBorder(
                               borderRadius: new BorderRadius.circular(16.0),
                             ),
