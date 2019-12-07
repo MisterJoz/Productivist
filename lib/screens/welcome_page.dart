@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:productivist/models/user.dart';
 import 'package:productivist/screens/project_page.dart';
+import 'package:productivist/screens/event_page.dart';
+
+import 'package:productivist/screens/reminder_page.dart';
+import 'package:productivist/screens/task_page.dart';
 import 'package:table_calendar/table_calendar.dart';
 import 'package:productivist/screens/calendar_page.dart';
 import 'package:intl/intl.dart';
+import 'package:percent_indicator/percent_indicator.dart';
 
 class WelcomePage extends StatefulWidget {
   @override
@@ -123,69 +128,196 @@ class _WelcomePageState extends State<WelcomePage> {
                 child: ListView(
                   scrollDirection: Axis.horizontal,
                   children: <Widget>[
-                    Card(
-                      color: Color.fromRGBO(15, 37, 51, 0),
-                      margin: EdgeInsets.fromLTRB(16.0, 16.0, 16.0, 16.0),
-                      child: Padding(
-                        padding: EdgeInsets.all(12.0),
-                        child: Row(
-                          crossAxisAlignment: CrossAxisAlignment.stretch,
-                          children: <Widget>[
-                            SizedBox(
-                              width: 250,
-                              child: Text(
-                                "Tasks",
-                                style: TextStyle(
-                                  fontSize: 36.0,
-                                  color: Colors.grey[350],
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => TasksPage()));
+                      },
+                      child: Card(
+                        color: Color.fromRGBO(15, 37, 51, 1.0),
+                        margin: EdgeInsets.fromLTRB(16.0, 16.0, 16.0, 16.0),
+                        child: Padding(
+                          padding: EdgeInsets.all(12.0),
+                          child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.stretch,
+                            children: <Widget>[
+                              SizedBox(
+                                width: 250,
+                                child: Container(
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    mainAxisAlignment: MainAxisAlignment.end,
+                                    children: <Widget>[
+                                      Padding(
+                                        padding: const EdgeInsets.all(4.0),
+                                        child: Text(
+                                          "${currentUser.tasks.length} tasks",
+                                          style: TextStyle(
+                                            fontSize: 15.0,
+                                            color: Colors.grey[100],
+                                          ),
+                                        ),
+                                      ),
+                                      Padding(
+                                        padding: const EdgeInsets.all(4.0),
+                                        child: Text(
+                                          "Tasks",
+                                          style: TextStyle(
+                                            fontSize: 30.0,
+                                            color: Colors.grey[350],
+                                          ),
+                                        ),
+                                      ),
+                                      Padding(
+                                        padding: EdgeInsets.all(4.0),
+                                        child: new LinearPercentIndicator(
+                                          width: 220,
+                                          animation: true,
+                                          lineHeight: 10.0,
+                                          animationDuration: 2000,
+                                          percent: 0.9,
+                                          linearStrokeCap:
+                                              LinearStrokeCap.roundAll,
+                                          progressColor: Color(0xff01A0C7),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
                                 ),
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
                       ),
                     ),
-                    Card(
-                      color: Color.fromRGBO(15, 37, 51, 0),
-                      margin: EdgeInsets.fromLTRB(16.0, 16.0, 16.0, 16.0),
-                      child: Padding(
-                        padding: EdgeInsets.all(12.0),
-                        child: Row(
-                          crossAxisAlignment: CrossAxisAlignment.stretch,
-                          children: <Widget>[
-                            SizedBox(
-                              width: 250,
-                              child: Text(
-                                "Events",
-                                style: TextStyle(
-                                  fontSize: 36.0,
-                                  color: Colors.grey[350],
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => EventsPage()));
+                      },
+                      child: Card(
+                        color: Color.fromRGBO(15, 37, 51, 1.0),
+                        margin: EdgeInsets.fromLTRB(16.0, 16.0, 16.0, 16.0),
+                        child: Padding(
+                          padding: EdgeInsets.all(12.0),
+                          child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.stretch,
+                            children: <Widget>[
+                              SizedBox(
+                                width: 250,
+                                child: Container(
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    mainAxisAlignment: MainAxisAlignment.end,
+                                    children: <Widget>[
+                                      Padding(
+                                        padding: const EdgeInsets.all(4.0),
+                                        child: currentUser.events.length != null
+                                            ? Text(
+                                                "${currentUser.events.length} events",
+                                                style: TextStyle(
+                                                  fontSize: 30.0,
+                                                  color: Colors.grey[350],
+                                                ),
+                                              )
+                                            : Text(
+                                                "${currentUser.events.length} events",
+                                                style: TextStyle(
+                                                  fontSize: 30.0,
+                                                  color: Colors.grey[350],
+                                                ),
+                                              ),
+                                      ),
+                                      Padding(
+                                        padding: const EdgeInsets.all(4.0),
+                                        child: Text(
+                                          "Events",
+                                          style: TextStyle(
+                                            fontSize: 30.0,
+                                            color: Colors.grey[350],
+                                          ),
+                                        ),
+                                      ),
+                                      Padding(
+                                        padding: EdgeInsets.all(4.0),
+                                        child: new LinearPercentIndicator(
+                                          width: 220,
+                                          animation: true,
+                                          lineHeight: 10.0,
+                                          animationDuration: 2000,
+                                          percent: 0.9,
+                                          linearStrokeCap:
+                                              LinearStrokeCap.roundAll,
+                                          progressColor: Color(0xff01A0C7),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
                                 ),
-                              ),
-                            )
-                          ],
+                              )
+                            ],
+                          ),
                         ),
                       ),
                     ),
-                    Card(
-                      color: Color.fromRGBO(15, 37, 51, 0),
-                      margin: EdgeInsets.fromLTRB(16.0, 16.0, 16.0, 16.0),
-                      child: Padding(
-                        padding: EdgeInsets.all(12.0),
-                        child: Row(
-                          crossAxisAlignment: CrossAxisAlignment.stretch,
-                          children: <Widget>[
-                            SizedBox(
-                              width: 250,
-                              child: Text(
-                                "Reminders",
-                                style: TextStyle(
-                                  fontSize: 36.0,
-                                  color: Colors.grey[350],
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => RemindersPage()));
+                      },
+                      child: Card(
+                        color: Color.fromRGBO(15, 37, 51, 1.0),
+                        margin: EdgeInsets.fromLTRB(16.0, 16.0, 16.0, 16.0),
+                        child: Padding(
+                          padding: EdgeInsets.all(12.0),
+                          child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.stretch,
+                            children: <Widget>[
+                              SizedBox(
+                                width: 250,
+                                child: Container(
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    mainAxisAlignment: MainAxisAlignment.end,
+                                    children: <Widget>[
+                                      Padding(
+                                        padding: const EdgeInsets.all(4.0),
+                                        child: Text(
+                                          "Reminders",
+                                          style: TextStyle(
+                                            fontSize: 30.0,
+                                            color: Colors.grey[350],
+                                          ),
+                                        ),
+                                      ),
+                                      Padding(
+                                        padding: EdgeInsets.all(4.0),
+                                        child: new LinearPercentIndicator(
+                                          width: 220,
+                                          animation: true,
+                                          lineHeight: 10.0,
+                                          animationDuration: 2000,
+                                          percent: 0.9,
+                                          linearStrokeCap:
+                                              LinearStrokeCap.roundAll,
+                                          progressColor: Color(0xff01A0C7),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
                                 ),
-                              ),
-                            )
-                          ],
+                              )
+                            ],
+                          ),
                         ),
                       ),
                     ),

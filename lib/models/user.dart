@@ -25,11 +25,33 @@ class User {
 }
 
 List<Task> myTasks = [
-  Task(id: 0, task: "Study for finals", created_at: DateTime.now()),
-  Task(id: 1, task: "Wash your clothes", created_at: DateTime.now()),
-  Task(id: 2, task: "Make some food", created_at: DateTime.now()),
-  Task(id: 3, task: "Go car shopping", created_at: DateTime.now()),
+  Task(
+    id: 0,
+    task: "Study for finals",
+    created_at: DateTime.now(),
+    priority: 1,
+  ),
+  Task(
+    id: 1,
+    task: "Wash your clothes",
+    created_at: DateTime.now(),
+    priority: 1,
+  ),
+  Task(
+    id: 2,
+    task: "Make some food",
+    created_at: DateTime.now(),
+    priority: 1,
+  ),
+  Task(
+    id: 3,
+    task: "Go car shopping",
+    created_at: DateTime.now(),
+    priority: 1,
+  ),
 ];
+
+List<Event> myEvents = [];
 
 List<Reminder> myReminders = [
   Reminder(
@@ -63,6 +85,7 @@ final User currentUser = User(
   email: "josh@gmail.com",
   password: "password",
   tasks: myTasks,
+  events: myEvents,
   reminders: myReminders,
   projects: myProjects,
 );
