@@ -6,6 +6,11 @@ class EventsPage extends StatefulWidget {
 }
 
 class _EventsPageState extends State<EventsPage> {
+  TextEditingController eventCtrl = TextEditingController();
+  TextEditingController dateCtrl = TextEditingController();
+  TextEditingController timeCtrl = TextEditingController();
+  TextEditingController locationCtrl = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -41,7 +46,112 @@ class _EventsPageState extends State<EventsPage> {
                       size: 50,
                       color: Colors.tealAccent[400],
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      //showDialog goes here
+                    showDialog(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return Dialog(
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(20.0)),
+                          child: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            children: <Widget>[
+                              Container(
+                                width: MediaQuery.of(context).size.width,
+                                child: Padding(
+                                  padding: EdgeInsets.fromLTRB(20, 20, 0, 15),
+                                  child: Text(
+                                    "+Event",
+                                    style: TextStyle(
+                                      color: Color(0xFF071030),
+                                      fontFamily: 'Montserrat-Bold',
+                                      fontSize: 25,
+                                      letterSpacing: -1,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              Padding(
+                                padding: EdgeInsets.fromLTRB(30, 20, 30, 10),
+                                child: Container(
+                                  child: TextField(
+                                    controller: eventCtrl,
+                                    decoration: InputDecoration(
+                                      hintText: 'Title',
+                                      border: OutlineInputBorder(),
+                                    ),
+                                  ),
+                                ),
+                              ),
+
+                              Padding(
+                                padding: EdgeInsets.fromLTRB(30, 0, 30, 10),
+                                child: Container(
+                                  child: TextField(
+                                    controller: dateCtrl,
+                                    decoration: InputDecoration(
+                                      hintText: 'mm/dd/yyyy',
+                                      border: OutlineInputBorder(),
+                                    ),
+                                  ),
+                                ),
+                              ),
+
+                              Padding(
+                                padding: EdgeInsets.fromLTRB(30, 0, 30, 10),
+                                child: Container(
+                                  child: TextField(
+                                    controller: timeCtrl,
+                                    decoration: InputDecoration(
+                                      hintText: 'Time',
+                                      border: OutlineInputBorder(),
+                                    ),
+                                  ),
+                                ),
+                              ),
+
+                              Padding(
+                                padding: EdgeInsets.fromLTRB(30, 0, 30, 20),
+                                child: Container(
+                                  child: TextField(
+                                    controller: locationCtrl,
+                                    decoration: InputDecoration(
+                                      hintText: 'Location',
+                                      border: OutlineInputBorder(),
+                                    ),
+                                  ),
+                                ),
+                              ),
+
+                              Padding(
+                                  padding: const EdgeInsets.only(bottom: 40),
+                                  child: Material(
+                                    elevation: 5.0,
+                                    borderRadius: BorderRadius.circular(30.0),
+                                    color: Colors.tealAccent[400],
+                                    child: MaterialButton(
+                                      minWidth: 200,
+                                      padding: EdgeInsets.fromLTRB(
+                                          40, 5, 40, 5),
+                                      onPressed: () {},
+                                      child: Text("Submit",
+                                          textAlign: TextAlign.center,
+                                          style: TextStyle(
+                                                  fontFamily: 'Montserrat',
+                                                  fontSize: 20)
+                                              .copyWith(
+                                                  color: Colors.white,
+                                                  fontWeight: FontWeight.bold)),
+                                    ),
+                                  )),
+                            ],
+                          ),
+                        );
+                      },
+                    );
+                  },
+                  
                   ),
                 ),
 
