@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:productivist/screens/signup_page.dart';
 import 'screens/welcome_page.dart';
 
+// Server name
+//https://sheltered-basin-61980.herokuapp.com/
+
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
