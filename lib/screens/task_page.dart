@@ -24,7 +24,7 @@ class _TasksPageState extends State<TasksPage> {
             child: Row(
               children: <Widget>[
                 Text(
-                  "To Do List",
+                  "Tasks",
                   style: TextStyle(
                       color: Colors.white,
                       fontSize: 40.0,
@@ -33,7 +33,7 @@ class _TasksPageState extends State<TasksPage> {
                 ),
 
                 Padding(
-                  padding: EdgeInsets.fromLTRB(110, 0, 0, 0),
+                  padding: EdgeInsets.fromLTRB(190, 0, 0, 0),
                   child: RawMaterialButton(
                     shape: CircleBorder(),
                     fillColor: Color(0xFF071030),
