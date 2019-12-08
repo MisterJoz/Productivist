@@ -12,23 +12,37 @@ class User {
   List<Reminder> reminders;
   List<Event> events;
   List<Project> projects;
+  List<Task> completed;
 
-  User(
-      {this.id,
+  User({
+      this.id,
       this.name,
       this.email,
       this.password,
       this.tasks,
       this.reminders,
       this.events,
-      this.projects});
+      this.projects,
+      this.completed,
+    });
 }
 
 List<Task> myTasks = [
-  Task(id: 0, task: "Study for finals", created_at: DateTime.now()),
-  Task(id: 1, task: "Wash your clothes", created_at: DateTime.now()),
-  Task(id: 2, task: "Make some food", created_at: DateTime.now()),
-  Task(id: 3, task: "Go car shopping", created_at: DateTime.now()),
+  Task(id: 0, task: "Study for finals", created_at: DateTime.now(), priority: 1),
+  Task(id: 1, task: "Wash your clothes", created_at: DateTime.now(), priority: 1),
+  Task(id: 2, task: "Make some food", created_at: DateTime.now(), priority: 1),
+  Task(id: 3, task: "Go car shopping", created_at: DateTime.now(), priority: 1),
+];
+
+List<Event> myEvents = [
+  Event(
+    id: 0,
+    title: "Bobs birthday party",
+    location: "1800 Norma Dr",
+    date: DateTime.now(),
+    time: DateTime.now(),
+    completed: false,
+  ),
 ];
 
 List<Reminder> myReminders = [
@@ -57,6 +71,8 @@ List<Project> myProjects = [
       dueDate: DateTime.now()),
 ];
 
+List<Task> completedTasks = [];
+
 final User currentUser = User(
   id: 0,
   name: "Josh",
@@ -65,4 +81,5 @@ final User currentUser = User(
   tasks: myTasks,
   reminders: myReminders,
   projects: myProjects,
+  completed: completedTasks,
 );
