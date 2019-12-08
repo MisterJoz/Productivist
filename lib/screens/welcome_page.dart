@@ -17,6 +17,8 @@ class WelcomePage extends StatefulWidget {
 
 class _WelcomePageState extends State<WelcomePage> {
   String formattedDate = DateFormat('EEE d MMM').format(DateTime.now());
+  double completionRate =
+      (currentUser.completed.length / currentUser.tasks.length).toDouble();
 
   CalendarController _controller;
   @override
@@ -130,6 +132,9 @@ class _WelcomePageState extends State<WelcomePage> {
                   children: <Widget>[
                     GestureDetector(
                       onTap: () {
+                        print(currentUser.completed.length /
+                            currentUser.tasks.length);
+
                         Navigator.push(
                             context,
                             MaterialPageRoute(
@@ -178,7 +183,7 @@ class _WelcomePageState extends State<WelcomePage> {
                                           animation: true,
                                           lineHeight: 10.0,
                                           animationDuration: 2000,
-                                          percent: 0.9,
+                                          percent: completionRate,
                                           linearStrokeCap:
                                               LinearStrokeCap.roundAll,
                                           progressColor: Color(0xff01A0C7),
@@ -222,15 +227,15 @@ class _WelcomePageState extends State<WelcomePage> {
                                             ? Text(
                                                 "${currentUser.events.length} events",
                                                 style: TextStyle(
-                                                  fontSize: 30.0,
-                                                  color: Colors.grey[350],
+                                                  fontSize: 15.0,
+                                                  color: Colors.grey[100],
                                                 ),
                                               )
                                             : Text(
                                                 "${currentUser.events.length} events",
                                                 style: TextStyle(
-                                                  fontSize: 30.0,
-                                                  color: Colors.grey[350],
+                                                  fontSize: 15.0,
+                                                  color: Colors.grey[100],
                                                 ),
                                               ),
                                       ),
@@ -289,6 +294,25 @@ class _WelcomePageState extends State<WelcomePage> {
                                         CrossAxisAlignment.start,
                                     mainAxisAlignment: MainAxisAlignment.end,
                                     children: <Widget>[
+                                      Padding(
+                                        padding: const EdgeInsets.all(4.0),
+                                        child:
+                                            currentUser.reminders.length != null
+                                                ? Text(
+                                                    "${currentUser.reminders.length} events",
+                                                    style: TextStyle(
+                                                      fontSize: 15.0,
+                                                      color: Colors.grey[100],
+                                                    ),
+                                                  )
+                                                : Text(
+                                                    "${currentUser.reminders.length} events",
+                                                    style: TextStyle(
+                                                      fontSize: 15.0,
+                                                      color: Colors.grey[100],
+                                                    ),
+                                                  ),
+                                      ),
                                       Padding(
                                         padding: const EdgeInsets.all(4.0),
                                         child: Text(

@@ -1,7 +1,17 @@
 class Event {
+  int id;
   String title;
-  String description;
+  String location;
   DateTime date;
+  DateTime time;
+  bool completed;
 
-  Event({this.title, this.description, this.date});
+  Event({
+    this.id,
+    this.title,
+    this.location,
+    this.date,
+    this.time,
+    this.completed = false,
+  });
 }

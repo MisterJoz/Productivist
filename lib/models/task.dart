@@ -4,6 +4,7 @@ class Task {
   DateTime created_at;
   bool completed;
   int priority;
+  String category;
 
   Task({
     this.id,
@@ -11,5 +12,6 @@ class Task {
     this.created_at,
     this.completed = false,
     this.priority,
+    this.category,
   });
 }

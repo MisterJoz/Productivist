@@ -12,16 +12,19 @@ class User {
   List<Reminder> reminders;
   List<Event> events;
   List<Project> projects;
+  List<Task> completed;
 
-  User(
-      {this.id,
-      this.name,
-      this.email,
-      this.password,
-      this.tasks,
-      this.reminders,
-      this.events,
-      this.projects});
+  User({
+    this.id,
+    this.name,
+    this.email,
+    this.password,
+    this.tasks,
+    this.reminders,
+    this.events,
+    this.projects,
+    this.completed,
+  });
 }
 
 List<Task> myTasks = [
@@ -51,23 +54,32 @@ List<Task> myTasks = [
   ),
 ];
 
-List<Event> myEvents = [];
+List<Event> myEvents = [
+  Event(
+    id: 0,
+    title: "Bobs birthday party",
+    location: "1800 Norma Dr",
+    date: DateTime.now(),
+    time: DateTime.now(),
+    completed: false,
+  ),
+];
 
 List<Reminder> myReminders = [
   Reminder(
     id: 0,
     text: "SWE2 Final Exam",
-    created_at: DateTime.now(),
+    remind_at: DateTime.now(),
   ),
   Reminder(
     id: 1,
     text: "HW Due",
-    created_at: DateTime.now(),
+    remind_at: DateTime.now(),
   ),
   Reminder(
     id: 2,
     text: "Do laundry",
-    created_at: DateTime.now(),
+    remind_at: DateTime.now(),
   )
 ];
 
@@ -79,6 +91,8 @@ List<Project> myProjects = [
       dueDate: DateTime.now()),
 ];
 
+List<Task> completedTasks = [];
+
 final User currentUser = User(
   id: 0,
   name: "Josh",
@@ -88,4 +102,5 @@ final User currentUser = User(
   events: myEvents,
   reminders: myReminders,
   projects: myProjects,
+  completed: completedTasks,
 );
