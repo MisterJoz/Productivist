@@ -1,14 +1,14 @@
 class Reminder {
   int id;
   String text;
-  DateTime created_at;
+  DateTime remind_at;
   int priority;
   bool completed;
 
   Reminder({
     this.id, 
     this.text, 
-    this.created_at, 
+    this.remind_at, 
     this.priority,
     this.completed = false,
     });

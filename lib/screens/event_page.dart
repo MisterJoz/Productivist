@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:productivist/models/user.dart';
+import 'package:productivist/models/event.dart';
 
 class EventsPage extends StatefulWidget {
   @override
@@ -10,6 +13,43 @@ class _EventsPageState extends State<EventsPage> {
   TextEditingController dateCtrl = TextEditingController();
   TextEditingController timeCtrl = TextEditingController();
   TextEditingController locationCtrl = TextEditingController();
+  Event newEvent = Event();
+  int _currentValue = 0;
+  int value = 0;
+
+  List<String> items = [
+    "Aberor",
+    "Jesse",
+    "Hey ",
+    " You",
+    "How",
+    "Are ",
+    "Yours",
+    "Doing",
+    "Today",
+    "Now"
+  ];
+
+  Widget _buildItemPicker() {
+    return CupertinoPicker(
+      itemExtent: 60.0,
+      backgroundColor: CupertinoColors.white,
+      onSelectedItemChanged: (index) {
+        setState(() {
+          _currentValue = index;
+        });
+        print(index);
+      },
+      children: new List<Widget>.generate(items.length, (index) {
+        return new Center(
+          child: Text(
+            items[index],
+            style: TextStyle(fontSize: 22.0),
+          ),
+        );
+      }),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -18,36 +58,35 @@ class _EventsPageState extends State<EventsPage> {
         backgroundColor: Color(0xFF1d284d),
       ),
       backgroundColor: Color(0xFF1d284d),
-      body: ListView(
+      body: Container(
+        child: Column(
         children: <Widget>[
-
           // Title row with add button [EDIT TO ADD NEW REMINDER]
           Padding(
             padding: EdgeInsets.fromLTRB(20, 20, 0, 10),
-            child: Row(
-              children: <Widget>[
-                Text(
-                  "Events",
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 40.0,
-                      fontFamily: "Montserrat-SemiBold",
-                      letterSpacing: -1),
-                ),
-
-                Padding(
-                  padding: EdgeInsets.fromLTRB(165, 0, 0, 0),
-                  child: RawMaterialButton(
-                    shape: CircleBorder(),
-                    fillColor: Color(0xFF071030),
-                    elevation: 10,
-                    child: Icon(
-                      Icons.add,
-                      size: 50,
-                      color: Colors.tealAccent[400],
-                    ),
-                    onPressed: () {
-                      //showDialog goes here
+            child: Row(children: <Widget>[
+              Text(
+                "Events",
+                style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 40.0,
+                    fontFamily: "Montserrat-SemiBold",
+                    letterSpacing: -1),
+              ),
+              Padding(
+                padding: EdgeInsets.fromLTRB(165, 0, 0, 0),
+                child: RawMaterialButton(
+                  shape: CircleBorder(),
+                  fillColor: Color(0xFF071030),
+                  elevation: 10,
+                  child: Icon(
+                    Icons.add,
+                    size: 50,
+                    color: Colors.tealAccent[400],
+                  ),
+                  onPressed: () {
+                    print(currentUser.events);
+                    //showDialog goes here
                     showDialog(
                       context: context,
                       builder: (BuildContext context) {
@@ -78,27 +117,75 @@ class _EventsPageState extends State<EventsPage> {
                                   child: TextField(
                                     controller: eventCtrl,
                                     decoration: InputDecoration(
-                                      hintText: 'Title',
+                                      hintText: 'Description',
                                       border: OutlineInputBorder(),
                                     ),
                                   ),
                                 ),
                               ),
-
                               Padding(
                                 padding: EdgeInsets.fromLTRB(30, 0, 30, 10),
                                 child: Container(
-                                  child: TextField(
+                                    /*child: TextField(
                                     controller: dateCtrl,
                                     decoration: InputDecoration(
                                       hintText: 'mm/dd/yyyy',
                                       border: OutlineInputBorder(),
                                     ),
-                                  ),
+                                  ),*/
+                                    ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.all(15),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: <Widget>[
+                                    IconButton(
+                                      icon: Icon(
+                                        Icons.alarm,
+                                        color: Colors.purpleAccent,
+                                      ),
+                                      onPressed: () {
+                                        showDatePicker(
+                                          context: context,
+                                          initialDate: DateTime.now(),
+                                          firstDate: DateTime(2001),
+                                          lastDate: DateTime(2222),
+                                        ).then((date) {
+                                          setState(() {
+                                            newEvent.date = date;
+
+                                            print(newEvent.date);
+                                          });
+                                        });
+                                      },
+                                    ),
+                                    Text("Date"),
+                                  ],
                                 ),
                               ),
 
                               Padding(
+                                      padding: const EdgeInsets.all(15),
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.start,
+                                        children: <Widget>[
+                                          IconButton(
+                                            icon: Icon(
+                                              Icons.info_outline,
+                                              color: Colors.redAccent,
+                                            ),
+                                            onPressed: () {
+                                              _buildItemPicker();
+                                            },
+                                          ),
+                                          Text("Priority"),
+                                        ],
+                                      ),
+                                    ),
+
+                              /*Padding(
                                 padding: EdgeInsets.fromLTRB(30, 0, 30, 10),
                                 child: Container(
                                   child: TextField(
@@ -122,8 +209,7 @@ class _EventsPageState extends State<EventsPage> {
                                     ),
                                   ),
                                 ),
-                              ),
-
+                              ),*/
                               Padding(
                                   padding: const EdgeInsets.only(bottom: 40),
                                   child: Material(
@@ -132,8 +218,8 @@ class _EventsPageState extends State<EventsPage> {
                                     color: Colors.tealAccent[400],
                                     child: MaterialButton(
                                       minWidth: 200,
-                                      padding: EdgeInsets.fromLTRB(
-                                          40, 5, 40, 5),
+                                      padding:
+                                          EdgeInsets.fromLTRB(40, 5, 40, 5),
                                       onPressed: () {},
                                       child: Text("Submit",
                                           textAlign: TextAlign.center,
@@ -151,24 +237,18 @@ class _EventsPageState extends State<EventsPage> {
                       },
                     );
                   },
-                  
-                  ),
                 ),
-
-              ]
-            ),
+              ),
+            ]),
           ),
 
           Padding(
             padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
             child: Divider(color: Colors.white),
           ),
-
-          //////////////////////////////////////////////
-          /* Events list tile design is needed here */
-          //////////////////////////////////////////////
-
+              
         ],
+      ),
       ),
     );
   }

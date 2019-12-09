@@ -49,17 +49,17 @@ List<Reminder> myReminders = [
   Reminder(
     id: 0,
     text: "SWE2 Final Exam",
-    created_at: DateTime.now(),
+    remind_at: DateTime.now(),
   ),
   Reminder(
     id: 1,
     text: "HW Due",
-    created_at: DateTime.now(),
+    remind_at: DateTime.now(),
   ),
   Reminder(
     id: 2,
     text: "Do laundry",
-    created_at: DateTime.now(),
+    remind_at: DateTime.now(),
   )
 ];
 

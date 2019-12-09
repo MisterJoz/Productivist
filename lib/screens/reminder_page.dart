@@ -1,4 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/material.dart' as prefix0;
+import 'package:productivist/models/user.dart';
+import 'package:productivist/models/reminder.dart';
+import 'package:intl/intl.dart';
 
 class RemindersPage extends StatefulWidget {
   @override
@@ -7,6 +12,7 @@ class RemindersPage extends StatefulWidget {
 
 class _RemindersPageState extends State<RemindersPage> {
   TextEditingController reminderCtrl = TextEditingController();
+  String formattedDate;
 
   @override
   Widget build(BuildContext context) {
@@ -116,9 +122,59 @@ class _RemindersPageState extends State<RemindersPage> {
             child: Divider(color: Colors.white),
           ),
 
-          //////////////////////////////////////////////
-          /* Reminder list tile design is needed here */
-          //////////////////////////////////////////////
+          /*Expanded(
+                child: Container(
+                  child: ListView.builder(
+                    itemCount: currentUser.reminders.length,
+                    itemBuilder: (_, i) {
+                      formattedDate = DateFormat('EEE d MMM')
+                          .format(currentUser.reminders[i].remind_at);
+                      return Dismissible(
+                        key: Key(UniqueKey().toString()),
+                        onDismissed: (direction) {
+                          currentUser.reminders.removeAt(i);
+                          setState(() {});
+                        },
+                        background: Container(
+                          color: Colors.red,
+                        ),
+                        child: CheckboxListTile(
+                          checkColor: Colors.white,
+                          activeColor: Color(0xff01A0C7),
+                          title: !currentUser.reminders[i].completed
+                              ? Text(
+                                  currentUser.reminders[i].text,
+                                  style: TextStyle(color: Colors.grey[100]),
+                                )
+                              : Text(
+                                  currentUser.reminders[i].text,
+                                  style: TextStyle(
+                                      color: Colors.grey[20],
+                                      decoration: TextDecoration.lineThrough),
+                                ),
+                          subtitle: Text(
+                            "$formattedDate",
+                            style: TextStyle(color: Colors.redAccent),
+                          ),
+                          value: currentUser.reminders[i].completed,
+                          onChanged: (value) {
+                            currentUser.reminders[i].completed =
+                                !currentUser.reminders[i].completed;
+                            // currentUser.reminders[i].completed == true
+                            //     ? currentUser.completed
+                            //         .add(currentUser.reminders[i])
+                            //     : currentUser.completed
+                            //         .remove(currentUser.reminders[i].task);
+                            print(currentUser.completed);
+                            setState(() {});
+                          },
+                        ),
+                      );
+                    },
+                  ),
+                ),
+              )*/
+          
         ],
       ),
     );

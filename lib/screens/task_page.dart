@@ -1,4 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:productivist/models/user.dart';
+import 'package:productivist/models/task.dart';
+import 'dart:async';
+import 'package:productivist/screens/datetime_picker.dart';
 
 class TasksPage extends StatefulWidget {
   @override
@@ -15,7 +20,8 @@ class _TasksPageState extends State<TasksPage> {
         backgroundColor: Color(0xFF1d284d),
       ),
       backgroundColor: Color(0xFF1d284d),
-      body: ListView(
+      body: Container(
+        child: Column(
         children: <Widget>[
 
           // Title row with add button [EDIT TO ADD NEW REMINDER]
@@ -120,13 +126,57 @@ class _TasksPageState extends State<TasksPage> {
             padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
             child: Divider(color: Colors.white),
           ),
-
-          //////////////////////////////////////////////
-          /* Tasks list tile design is needed here */
-          //////////////////////////////////////////////
-
+          Expanded(
+                child: Container(
+                  child: ListView.builder(
+                    itemCount: currentUser.tasks.length,
+                    itemBuilder: (_, i) {
+                      return Dismissible(
+                        key: Key(UniqueKey().toString()),
+                        onDismissed: (direction) {
+                          currentUser.tasks.removeAt(i);
+                          setState(() {});
+                        },
+                        background: Container(
+                          color: Colors.red,
+                        ),
+                        child: CheckboxListTile(
+                          checkColor: Colors.white,
+                          activeColor: Color(0xff01A0C7),
+                          title: !currentUser.tasks[i].completed
+                              ? Text(
+                                  currentUser.tasks[i].task,
+                                  style: TextStyle(color: Colors.grey[100]),
+                                )
+                              : Text(
+                                  currentUser.tasks[i].task,
+                                  style: TextStyle(
+                                      color: Colors.grey[20],
+                                      decoration: TextDecoration.lineThrough),
+                                ),
+                          value: currentUser.tasks[i].completed,
+                          onChanged: (value) {
+                            currentUser.tasks[i].completed =
+                                !currentUser.tasks[i].completed;
+                            currentUser.tasks[i].completed == true
+                                ? currentUser.completed
+                                    .add(currentUser.tasks[i])
+                                : currentUser.completed
+                                    .remove(currentUser.tasks[i].task);
+                            print(currentUser.completed);
+                            setState(() {});
+                          },
+                        ),
+                      );
+                    },
+                  ),
+                ),
+              )
+          
         ],
       ),
+      ),
+
     );
   }
 }
